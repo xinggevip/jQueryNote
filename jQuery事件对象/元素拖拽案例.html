@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元素拖拽案例</title>
+    <style>
+        .box{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+
+    </div>
+
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(".box").mousedown(function (event){
+            $(this).css("opacity",0.6);
+            // 拖动效果要在鼠标移动事件中绑定
+            var x = event.pageX - $(this).offset().left;
+            var y = event.pageY -$(this).offset().top;
+            $(this).mousemove(function (e){
+                console.log("x = " + e.pageX + "y = " + e.pageY);
+                $(this).offset({
+                    left:(e.pageX - x),
+                    top:(e.pageY - y)
+                })
+            })
+        }).mouseup(function (){
+            $(this).css("opacity",1);
+            $(this).off("mousemove");
+        });
+
+
+    </script>
+</body>
+</html>

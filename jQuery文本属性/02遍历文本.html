@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>这是文本1</p>
+    <p>这是文本2</p>
+    <p>这是文本3</p>
+    <p>这是文本4</p>
+    <p>这是文本5</p>
+
+    <button id="btn">BTN</button>
+
+
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        // 点击按钮遍历p标签中的文本
+        $("#btn").click(function (){
+            $("p").text(function (index, ele){
+                console.log(index,ele); // 0 "这是文本1"...
+                if(index %2 == 0){
+                    return "偶数行";
+                }else{
+                    return "奇数行";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

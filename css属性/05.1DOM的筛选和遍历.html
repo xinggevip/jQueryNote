@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul{
+            width: 200px;
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none;
+            background: #ccc;
+            margin: 10px 0px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+
+        /*
+            first()、last()、odd()、even()、eq()
+        */
+        
+        // 一组标签中的第一个
+        $("li:first").css("background","orange");
+        // 一组标签中的最后一个
+        $("li:last").css("background","yellow");
+        // 一组标签中的奇数个
+        $("li:odd").css("background","red")
+        // 一组标签中的偶数个
+        $("li:even").css("background","green")
+        // 一组标签中的指定index
+        $("li:eq(2)").css("background","blue");
+        $("li:eq(-1)").css("background","blue");    // 负值表示倒数 -1为倒数第一个
+
+
+        // 可以把筛选的命令放外面
+        // $("li").first().css("background","orange");
+    </script>
+</body>
+</html>

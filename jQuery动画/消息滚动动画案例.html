@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .contnner{
+            width: 700px;
+            height: 550px;
+            margin:30px auto;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+        .info{
+            width: 700px;
+            height: 80px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            margin-bottom: 10px;
+        }
+        .info::after,.info::before{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .info .left{
+            float: left;
+            width: 80px;
+            height: 80px;
+            /* border: 1px solid red; */
+        }
+        .left img{
+            width: 80px;
+            height: 80px;
+        }
+        .info .right{
+            float: left;
+            width: 580px;
+            height: 100%;
+            padding-left: 30px;
+        }
+        .right h3{
+            margin: 0;
+        }
+        .right p{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>消息滚动案例</h1>
+    <hr>
+    <div class="contnner">
+        <div class="info">
+            <div class="left">
+                <img src="../imgs/girls/01.jpg" alt="">
+            </div>
+                
+            <div class="right">
+                <h3>标题</h3>
+                <p>内容</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="left">
+                <img src="../imgs/girls/02.jpg" alt="">
+            </div>
+
+            <div class="right">
+                <h3>标题</h3>
+                <p>内容</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="left">
+                <img src="../imgs/girls/03.jpg" alt="">
+            </div>
+
+            <div class="right">
+                <h3>标题</h3>
+                <p>内容</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="left">
+                <img src="../imgs/girls/04.jpg" alt="">
+            </div>
+
+            <div class="right">
+                <h3>标题</h3>
+                <p>内容</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="left">
+                <img src="../imgs/girls/05.jpg" alt="">
+            </div>
+
+            <div class="right">
+                <h3>标题</h3>
+                <p>内容</p>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+                // setInterval(function (){
+                //     $(".info").last().fadeTo(0,0).hide().prependTo(".contnner").first().slideDown().fadeTo(1000,1);
+                // },3000)
+
+                setInterval(function (){
+                    $(".info").last().fadeOut(1000,function(){
+                        $(this).prependTo(".contnner").delay(500).slideDown();
+                    })
+                },3000)
+
+        })
+    </script>
+</body>
+</html>

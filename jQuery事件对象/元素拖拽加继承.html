@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+            top: 0;
+        }
+        .left{
+            left: 0
+        }
+        .right{
+            right: 0
+        }
+        .center{
+            left: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" class="box left">父类拖拽</div>
+    <div id="div2" class="box right">子类拖拽</div>
+    <div id="div3" class="box center" draggable="true">css拖拽</div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            class Drag{
+                // 构造函数
+                constructor(selector){
+                    this.oDiv = $(selector);
+                    this.disX = 0;
+                    this.disY = 0;
+                    this.init();
+                    
+                };
+                init (){
+                    this.oDiv.mousedown(function (e){
+                        this.disX = e.pageX - $(this).offset().left;
+                        this.disY = e.pageY - $(this).offset().top;
+                        console.log(this.disX,this.disY);
+                        // 绑定移动事件
+                        $(this).mousemove(function (event){
+                            $(this).offset({
+                                left:event.pageX - this.disX,
+                                top:event.pageY - this.disY
+                            })
+                        });
+                        // 取消默认事件和冒泡事件
+                        return false;
+                    }).mouseup(function (){
+                            $(this).off("mousemove");
+                            
+                    });
+                }
+                
+                
+            };
+            class LimitDrag extends Drag{
+                init (){
+                    this.oDiv.mousedown(function (e){
+                        this.disX = e.pageX - $(this).offset().left;
+                        this.disY = e.pageY - $(this).offset().top;
+                        console.log(this.disX,this.disY);
+                        // 绑定移动事件
+                        $(this).mousemove(function (event){
+                            console.log("继承的");
+                            $(this).offset({
+                                left:event.pageX - this.disX,
+                                top:event.pageY - this.disY
+                            })
+                            if($(this).offset().left <= 0){
+                                $(this).offset({
+                                    left:0
+                                })
+                            };
+                            if($(this).offset().top <= 0){
+                                $(this).offset({
+                                    top:0
+                                })
+                            };
+                            
+                        });
+                        // 取消默认事件和冒泡事件
+                        return false;
+                    }).mouseup(function (){
+                            $(this).off("mousemove");
+                            
+                    });
+                }
+            }
+
+
+            new Drag("#div1");
+            new LimitDrag("#div2");
+            
+        })
+    </script>
+</body>
+</html>

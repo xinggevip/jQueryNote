@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="idtest" class="classtext" custom="teacher">
+        hh
+    </div>
+
+    <div>
+
+    </div>
+    <p>xx</p>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        //jQuery的attr()、prop()方法获取属性值
+        console.log( $("div").attr("id") ); // idtest
+        console.log( $("div").prop("id") ); // idtest
+
+        console.log( $("div").attr("class") );  // classtext
+        console.log( $("div").prop("class") );  // classtext
+
+        console.log( $("div").attr("custom") ); // teacher
+        console.log( $("div").prop("custom") ); // undefined
+
+        /*
+            attr全拼为Attribute 意为属性，attr()可以获取所有属性，不管是固有的还是自定义的
+            prop全拼为prototype 意为原型，prop()只能获取固有属性，用户自定义的属性返回undefined
+        */
+
+        // 原生js获取属性值
+        console.log( idtest.id );   // idtest
+        console.log( idtest.className ); //classtext
+        console.log( idtest.custom );    // undefined 无法获取自定义属性
+
+        // Jquery的attr()、prop()方法设置属性值
+        $("div").attr("id","ided"); // 成功设置id的属性值为ided
+        $("p").prop("id","ided");   // 成功设置id的属性值为ided
+
+        $("div").attr("custom","customed"); // 成功设置custom的属性值为customed
+        $("p").prop("custom","customed");   // 未能成功设置
+        
+        // 可以传对象设置多个属性
+        $("div").attr({
+            id:"setid",
+            class:"setclass"
+        });
+
+        
+        // attr()、prop取值取一个，赋值赋一组
+        // attr()获取一个未设置的属性，返回 undefined
+        // prop()获取一个未设置的属性，返回 空（固有的属性返回空，自定义的返回 undefined）
+    </script>
+</body>
+</html>

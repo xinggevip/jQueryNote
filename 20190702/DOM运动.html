@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: yellowgreen;
+            border-radius: 50%;
+            /* margin: 20px; */
+            position: absolute;
+        }
+        #btn1{
+            position: absolute;
+            top: 130px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <input type="button" value="移动" id="btn1">
+
+    <script>
+        var yuan = document.getElementById("div1");
+        var btn1 = document.getElementById("btn1");
+        var timer;
+        var juli = 0;
+        btn1.onclick = function (){
+            console.log(yuan.offsetLeft);
+            timer = setInterval(() => {
+                if(juli < 100){
+                    juli+=5;
+                    yuan.style.left = (yuan.offsetLeft + 5) + "px"
+                }else{
+                    clearInterval(timer);
+                    juli = 0;
+                }
+            }, 10);
+        }
+    </script>
+</body>
+</html>

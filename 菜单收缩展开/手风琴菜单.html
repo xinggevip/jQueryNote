@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            font: 16px "Microsoft YaHei",sans-serif;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        a {
+            text-decoration: none;
+        }
+        .nav-list {
+            width: 220px;
+            border: 1px solid #ccc;
+        }
+        .nav-list h3 {
+            margin: 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            /* line-height: 20px; */
+            font-weight: normal;
+            color: #fff;
+            background-color: #333;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            position:relative;
+        }
+        .nav-list li {
+            border-bottom: 1px solid #ccc;
+        }
+        .nav-list li a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 14px;
+        }
+        .nav-list li a:hover{
+            background-color: #ccc;
+            
+        }
+        .nav-list ul{
+            display: none;
+        }
+        .nav-list h3 span{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url("./img/arrow_left.png") center center;
+            background-size: 100% 100%;
+            right: 20px;
+
+        }
+        .nav-list h3:hover{
+            background-color: #222;
+        }
+        .nav-list h3.open span{
+            background: url("./img/arrow_down.png") center center;
+            background-size: 100% 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-list">
+        <h3>弹性计算<span></span></h3>
+        <ul>
+            <li><a href="#">云服务器ECS</a></li>
+            <li><a href="#">轻量应用服务器</a></li>
+            <li><a href="#">虚拟主机</a></li>
+        </ul>
+        <h3>数据库<span></span></h3>
+        <ul>
+            <li><a href="#">MySQL</a></li>
+            <li><a href="#">SQL Server</a></li>
+            <li><a href="#">Redis</a></li>
+        </ul>
+        <h3>域名与网站<span></span></h3>
+        <ul>
+            <li><a href="#">域名注册</a></li>
+            <li><a href="#">网站建设</a></li>
+            <li><a href="#">云虚拟主机</a></li>
+        </ul>
+        <h3>网络与存储<span></span></h3>
+        <ul>
+            <li><a href="#">对象存储</a></li>
+            <li><a href="#">oss</a></li>
+            <li><a href="#">弹性公网IP</a></li>
+        </ul>
+    </div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+            $(".nav-list h3").first().addClass("open").next("ul").slideDown();
+            $(".nav-list h3").click(function (){
+
+                // 一步一步来，先实现点击菜单添加open样式，其他元素移除open样式
+                $(this)                 // 原始状态 jq集合为点击的和和h3
+                .toggleClass("open")    // 设置open开关类
+                .siblings("h3")         // 破坏操作，jq集合为除了点击的h3的其他所有h3
+                .removeClass("open")    // 移除jq集合的所有的open类
+                .end()                  // 返回上一次破坏操作前的状态，返回 this
+                .next("ul")             // jq集合为this的下一个元素ul
+                .slideToggle()          // 设置开关动画--提供显示隐藏功能
+                .siblings("ul")         // 破坏操作，jq集合为除了ul的其他所有ul
+                .slideUp();             // 所有ul关闭，隐藏
+
+                
+            })
+
+
+        })
+    </script>
+</body>
+</html>

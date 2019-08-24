@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    ul{
+        list-style: none;
+        margin: 10px 0px;
+        padding: 0px;
+
+    }
+    .list li{
+        width: 400px;
+        background: #ccc;
+        border-radius: 10px;
+        padding: 1px 10px;
+        margin-top: 10px;
+    }
+    p span{
+        float: right;
+    }
+    .list .active{
+        background: blueviolet;
+        color: aliceblue;
+    }
+    .btn{
+        width: 420px;
+        background: whitesmoke;
+        border-radius: 10px;
+        padding: 1px 10px;
+        margin-top: 10px;
+        height: 40px;
+        outline: none;
+        color:blueviolet;
+    }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+        <li><p>北京<span>￥1000</span></p></li>
+        <li><p>上海<span>￥1000</span></p></li>
+        <li><p>广东<span>￥1200</span></p></li>
+        <li><p>杭州<span>￥1500</span></p></li>
+        <li><p>深圳<span>￥2000</span></p></li>
+        <li><p>成都<span>￥1100</span></p></li>
+    </ul>
+    <button class="btn" id="butt">买票</button>
+    
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+
+
+        $("#butt").click(function (){
+            $("#butt").toggleClass("btn");  // 自动判断是否含有指定class 如果有则移除，如果没有则添加
+        });
+
+
+
+
+        $(".list li").click(function (){
+            // $(".list li").addClass("active");
+            console.log(this);
+            console.log($(this).attr("class"))
+
+            /*
+                方法一
+            */
+            // if($(this).prop("class") == ""){
+            //     $(this).addClass("active");
+            // }else{
+            //     $(this).removeClass("active");
+            // }
+
+            /*
+                方法二
+            */
+            // if($(this).attr("class") == "active"){   //--获取class属性值判断
+
+
+            // if($(this).hasClass("active")){     // 内置函数 判断是否含有指定class
+            //     $(this).removeClass("active");
+            // }else{
+            //     $(this).addClass("active");
+            // }
+
+            /*
+                方法三
+            */
+            $(this).toggleClass("active");
+
+
+            
+        });
+
+
+
+
+        /*
+                方法四
+        */
+        // 原生实现同上效果
+        // var lis = document.getElementsByTagName("li");
+        // for(let i = 0;i < lis.length;i++){
+        //     lis[i].onclick = function (){
+        //         console.log(this);
+
+        //         if((this.className) == ""){
+        //             this.className = "active";
+                    
+        //         }else{
+        //             this.className = "";
+        //         }
+        //     }
+        // }
+
+    </script>
+</body>
+</html>

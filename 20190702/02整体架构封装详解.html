@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dom">
+        这是内容
+    </div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        
+        console.log ($("#dom") );   // jQuery.fn.init [div#dom]
+
+        /*
+        
+        {
+            0: div#dom
+            length:1
+            __proto__: Object(0)
+        }
+        
+        */
+
+        // 其实获取的是一个对象，或者说是类数组，或者说是带属性和方法的数组
+
+        console.log( $("ul li") );  // jQuery.fn.init(5) [li, li, li, li, li, prevObject: jQuery.fn.init(1)]
+
+        /*
+        
+        {
+            0:li
+            1:li
+            2:li
+            3:li
+            4:li
+            length:5
+            prevObject: jQuery.fn.init [document]
+            __proto__: Object(0)
+        }
+
+        */
+
+
+
+
+
+
+    </script>
+</body>
+</html>

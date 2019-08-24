@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            padding: 20px;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            background-color: #ccc;
+        }
+        #box img{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery动画效果</h1>
+    <hr>
+
+    <button id="btn01">hide</button>
+    <button id="btn02">show</button>
+    <button id="btn03">toggle</button>
+    <br>
+    <br>
+    <div id="box">
+        <img src="http://www.qiangssvip.com/usr/uploads/2019/05/281426999.jpg" alt="">
+    </div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            $("#btn01").click(function (){
+                // $("#box img").hide();    
+                // speed**：三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+                $("#box").fadeIn("normal",function (){
+                    console.log("隐藏动画已结束");
+                    // $("#btn02").trigger("click");
+
+                });
+
+            });
+            $("#btn02").click(function (){
+                $("#box").fadeOut("normal",function (){
+                    console.log("显示动画已结束");
+                    // $("#btn01").trigger("click");
+
+                });
+            });
+            $("#btn03").click(function (){
+                $("#box").fadeToggle("normal","linear",function (){
+                    console.log("toggle切换显示动画结束")
+                });
+            })
+        })
+    </script>
+</body>
+</html>

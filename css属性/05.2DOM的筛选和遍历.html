@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul{
+            width: 200px;
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none;
+            background: #ccc;
+            margin: 10px 0px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <p>我是p标签</p>
+        <li>5</li>
+    </ul>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+
+        /*
+            prev()、prevAlL()、next()、nextAll()、siblings()
+        */
+
+        // prev()找到index为2的上一个元素
+        $("li:eq(2)").prev().css("background","orange");
+
+        // 如果判断prev传的参数，如果他上边的兄弟元素为li的话就返回jquery对象，否则返回jquery空对象
+        $("li:eq(2)").prev("li").css("background","orange");
+        console.log( $("li:eq(2)").prev("li") );    // jQuery.fn.init [li, prevObject: jQuery.fn.init(1)]
+        console.log( $("li:eq(5)").prev("li") );    // jQuery.fn.init [prevObject: jQuery.fn.init(0)]
+
+        // prev找到index为2的上所有元素
+        $("li:eq(2)").prevAll().css("background","red")
+
+        // 还有顾名思义的next()和nextALl() 
+
+        /*
+            注意点：当一组标签没有指定没有某一个元素的时候
+            next() = nextAll()
+            prev() = prevAll()
+        */
+
+        $("li").nextAll().css("background","green");    // 除了第一个都绿的
+        $("li").prevAll().css("background","orange");   // 除了最后一个都橘了
+        
+        $("li").prev().css("background","red");     // 除了最后一个都红了
+        $("li").next().css("background","green");   // 除了第一个都绿了
+
+
+        // siblings()筛选出兄弟元素
+        $("li:eq(2)").siblings().css("background","red");   // 除了index为2的元素，其他都红了
+        $("li").siblings().css("background","red");     // 所有li和他的兄弟元素都红了
+
+
+
+    </script>
+</body>
+</html>

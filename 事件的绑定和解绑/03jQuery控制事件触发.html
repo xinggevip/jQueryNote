@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .btnsyle{
+            width: 120px;
+            line-height: 40px;
+            font-size: 16px;
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <title>03jQuery控制事件触发</title>
+</head>
+<body>
+    <h1>03jQuery控制事件触发</h1>
+    <hr>
+    <button id="btn1" class="btnsyle">按钮1</button>
+    <br>
+    <button id="btn2" class="btnsyle">触发第一个按钮</button>
+
+    <ul>
+        <li>li标签1</li>
+        <li>li标签2</li>
+        <li>li标签3</li>
+        <li>li标签4</li>
+        <li>li标签5</li>
+    </ul>
+    <button id="trbtn">li trigger</button>
+    <button id="trhbtn">li triggerHandler</button>
+
+
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+
+        /*
+            trigger()、triggerHandler()，用代码实现其他元素的Even事件
+        */
+
+        $("#btn1").click(function (){
+
+            console.log("按钮1被点击了")
+        });
+        $("#btn2").click(function (){ 
+            // trigger 可以链式操作，而triggerHandler不可以，
+            // trigger 可以操作元素固有的事件，triggerHandler不可以，比如获取焦点事件
+            $("#btn1").trigger("click")
+        });
+        $("ul li").click(function (){
+            alert($(this).index());
+        });
+
+        $("#trbtn").click(function (){
+            // 遍历触发了li所有的click事件
+            $("ul li").trigger("click");
+        });
+        $("#trhbtn").click(function (){
+            // 只触发了第一个li的事件
+            $("ul li").triggerHandler("click");
+        });
+
+
+
+    </script>
+</body>
+</html>

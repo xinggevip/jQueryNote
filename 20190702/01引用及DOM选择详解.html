@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="dom" class="div1">
+        Hi there
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        // 传统方法
+        console.log( document.getElementById("dom").innerText );    // 去掉首尾空格的字符
+        // jQuery方法
+        console.log( jQuery("#dom").text() );   // 未去掉首尾空格的字符
+
+
+        // 传统方法
+        console.log( document.getElementById("dom") );  // 原生DOM
+        // jQuery方法
+        // console.log( jQuery("#dom") );   // 数组
+        console.log( jQuery("#dom")[0] );   // 原生DOM
+
+        // jQuery支持根据父子选择器,组合选择器获取元素
+        console.log( jQuery("ul li").text() );          // 12345
+        console.log( jQuery("ul li")[0].innerText );    // 1
+
+        // 都是把获取的DOM元素变成数组
+        var div1 = document.getElementsByTagName("li");
+        console.log( div1 );
+        // $() 方法会把类数组的每个带索引的值添加到jQuery类数组中
+        console.log( $(div1) );         // jQuery.fn.init [div#dom.div1]
+        console.log( jQuery("li") ); // jQuery.fn.init [div#dom.div1, prevObject: jQuery.fn.init(1)]
+
+        console.log( $({0:"a",1:"b",2:"c", length:3}) );    // jQuery.fn.init(3) ["a", "b", "c"]
+        console.log( $(["a","b"]) );    // jQuery.fn.init(2) ["a", "b"]
+
+        // $() 的参数可试是css选择器，原生DOM对象，仿类数组和数组，函数，放的函数会自动执行
+
+
+        // DOM文档解析之后才会执行，所以js文件位置放到上面和下面都可以
+        $(function (){
+            console.log("会自动执行吗？");  // 会自动执行吗？
+        });
+
+        // 和上面的效果一模一样
+        $(document).ready(function (){
+            console.log("会自动执行吗？");
+        });
+
+
+        // 
+        console.log( $(1,2,3,4) );  // jQuery.fn.init [1] 只把1添加进了jQuery数组中 
+        console.log( $(null) );     // jQuery.fn.init {}  返回一个空对象
+        console.log( $(false) );    // jQuery.fn.init {}  返回一个空对象
+        console.log( $(true) );     // jQuery.fn.init [true]  返回一个数组
+        console.log( $({0:"a",1:"b",2:"c",3:"d"}) );    // jQuery.fn.init [{…}] 返回一个数组，第一个索引值为传递的对象
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            background: rgba(0, 0, 0, 0.4);
+            width: 120px;
+            border-radius: 4px;
+            
+        }
+        .title{
+            width: 120px;
+            background: #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>你是什么垃圾？</h3>
+    <ul class="sm">
+        <li class="title"><input type="checkbox" ><span>垃圾</span></li>
+        <li><input type="checkbox"><span>干垃圾</span></li>
+        <li><input type="checkbox"><span>湿垃圾</span></li>
+        <li><input type="checkbox"><span>可回收垃圾</span></li>
+        <li><input type="checkbox"><span>有害垃圾</span></li>
+    </ul>
+
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        var i = 0
+        $(".title input").change(function (){
+            i++;
+            console.log("状态改变了" + i);
+            console.log($(".title input").prop("checked"));
+
+            if( $(".sm input").prop("checked")){
+                $(".sm input").prop("checked",true);
+            }else{
+                $(".sm input").prop("checked",false);
+            }
+        });
+
+        // removeAttr()移除属性
+        $(".sm").removeAttr("class");   // 正常移除class属性
+        // removeProp()移除属性  只能移除prop自定义的属性，原型属性清除不掉
+        $("h3").prop("aaa","a");    // prop()定义的非原型属性不会应用到DOM上，但可以打印出来
+        console.log( $("h3").prop("aaa") ); // a
+        $("h3").removeProp("aaa");
+        console.log( $("h3").prop("aaa") ); // undefinded
+    </script>
+</body>
+</html>

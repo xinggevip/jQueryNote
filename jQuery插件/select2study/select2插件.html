@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>select2插件</title>
+    <link rel="stylesheet" href="./select2/css/select2.min.css">
+</head>
+<body>
+    <select id="mySelect01">
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">南京</option>
+        <option value="4">广东</option>
+        <option value="5">深圳</option>
+        <option value="6">香港特别行政区</option>
+    </select>
+    <select id="mySelect02"></select>
+    <select id="mySelect03">
+        <option></option>
+    </select>
+    <select class="downList1">
+        <option></option>
+    </select>
+
+    <script src="../../jqueryFile/jquery-3.4.1.js"></script>
+    <script src="./select2/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function (){
+            // 调用插件
+            $("#mySelect01").select2({
+                width: 150
+            });
+            // 调用插件
+            $("#mySelect02").select2({
+                width: 150,
+                data:[
+                    {id:1,text:"小明"},
+                    {id:2,text:"小红"},
+                    {id:3,text:"小王"},
+                    {id:4,text:"小东"},
+                ]
+            });
+            // 调用插件
+            $("#mySelect03").select2({
+                width: 150,
+                placeholder:'请选择',//默认文字提示
+                ajax: {
+                    url: "http://localhost:3000/dizhi",
+                    dataType: "json",
+                    processResults: function (data) {
+                        console.log(data);
+                        return {
+                            results: data
+                        }
+                    }
+
+                }
+
+            });
+            // 调用插件
+            var dataList = [
+                { id: 0, text: 'ljiong.com(老囧博客)' },
+                { id: 1, text: 'Ants(蚂蚁)' },
+                { id: 2, text: 'can you speak javascript(你能讲JavaScript嘛)' },
+                { id: 3, text: 'vae(许嵩)' },
+                { id: 4, text: 'Badminton(羽毛球)' }
+            ];
+            $(".downList1").select2({
+                data: dataList,
+                placeholder:'请选择',//默认文字提示
+                language: "zh-CN",//汉化
+                allowClear: true//允许清空
+            })
+
+
+            })
+    </script>
+</body>
+</html>

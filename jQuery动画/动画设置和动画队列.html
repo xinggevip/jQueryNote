@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            padding: 20px;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            background-color: #ccc;
+            overflow: hidden;
+        }
+        #box img{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery动画控制-stop/finish/delay</h1>
+    <hr>
+
+    <button id="btn01">down</button>
+    <button id="btn02">up</button>
+    <button id="btn03">stop</button>
+    <button id="btn04">finish</button>
+    <button id="btn05">delay</button>
+
+    <br>
+    <br>
+    <div id="box">
+        <img src="http://www.qiangssvip.com/usr/uploads/2019/05/281426999.jpg" alt="">
+    </div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+
+            // 关闭页面中所有的动画效果
+            jQuery.fx.off = true;
+
+            $("#btn01").click(function (){
+                console.log("hhhhhhhhh");
+                $("#box").slideDown(3000);
+            });
+            $("#btn02").click(function (){
+                $("#box").slideUp(3000);
+            });
+            $("#btn03").click(function (){
+                $("#box").stop();   // 暂停动画
+            });
+            $("#btn04").click(function (){
+                $("#box").finish(); // 直接调到结束动画的状态
+            });
+            var time = 0;
+            $("#btn05").click(function (){
+                var timer = setInterval(() => {
+                    console.log( time++ );
+                }, 1000);
+                $("#box").hide(2000).delay(3000).show(2000); // 延迟动画的执行
+                
+            });
+        })
+    </script>
+</body>
+</html>

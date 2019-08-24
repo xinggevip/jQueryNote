@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #box{
+            width: 800px;
+            padding: 20px;
+            border: 2px dashed orange;
+            font-size: 0;
+        }
+        #box img{
+            width: 200px;
+        }
+        #box .active{
+            border: 1px solid red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOm 操作</h1>
+    <hr>
+        <img id="logo" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/image_72.png?v=md5" alt="">
+    <hr>
+    <div id="box">
+        <img class="active" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+    </div>
+    <div id="box2">
+
+    </div>
+    <button id="btn1">replaceWidth</button>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            
+            $("#box img").click(function (){
+                console.log("hah");
+                console.log($(this));
+                $(this).toggleClass("active").siblings("img").removeClass("active");
+            });
+            $("#btn1").click(function (){
+                // $("img.active").replaceWith("<img src='https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/bdbri_72.png?v=md5'>")
+                var newlogo = $("#logo");
+                // $("img.active").replaceWith($(newlogo));
+                $("#logo").replaceAll("img.active");
+            });
+
+
+        })
+    </script>
+</body>
+</html>

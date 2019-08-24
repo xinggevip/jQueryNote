@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <br>
+        <a href="http://www.baidu.com" id="btn">按钮</a>
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            $(document).click(function (e){
+                console.log("X = " + e.pageX + "Y = " + e.pageY);
+            });
+            $(document).keypress(function (e){
+                console.log(e.type) // keypress  获取事件的名字
+                console.log(String.fromCharCode(e.which));  // which为按键的ASCII码
+            });
+
+            $("#btn").click(function (e){
+                // e.preventDefault();  // 阻止默认事件
+                // e.stopPropagation(); // 阻止冒泡事件
+                console.log("阻止默认事件和冒泡")
+                return false;   // 阻止默认事件和冒泡
+            })
+
+        })
+    </script>
+</body>
+</html>

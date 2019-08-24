@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        Hello
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <button id="btn">BTN</button>
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        // 在#demo中添加标签
+        // $("#btn").click(function (){
+        //     $("#demo p").html("前端<b>码畜</b>");
+        // });
+
+        $("#btn").click(function (){
+            $("#demo p").html(function (index,ele){
+                console.log(ele);
+                return "前端<b>码畜</b>";
+            });
+        });
+
+        // text() 取值赋值均一组
+        // html() 取值取一个，赋值赋一组
+ 
+    </script>
+</body>
+</html>

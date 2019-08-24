@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul{
+            width: 200px;
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none;
+            background: #ccc;
+            margin: 10px 0px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="test">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        /*
+            filter()、not()、slice()
+        */
+        $("li").filter(function (index, ele){
+            console.log(index, ele);
+            // if(index %2 == 0){
+            //     return true;
+            // }
+            
+            // 三元运算符
+            return index % 2 == 0 ? true : false;
+        }).css("background","red");
+
+
+
+        // 选择非指定选择器的其他元素
+        $("li").not(".test").css("background","yellow");
+        // 只要这一组标签有一个标签包含指定选择器 则返回true
+        console.log( $("li").is(".test") ); // true
+        // 指定index范围钻则元素,
+        // (start,end) 如果没有指定end，则表示从指定的位置到最后都选中
+        $("li").slice(2).css("background","orange");
+
+
+    </script>
+</body>
+</html>

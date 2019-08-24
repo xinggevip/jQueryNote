@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font: 16px "Microsoft YaHei",sans-serif;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .play-box{
+            position: relative;
+            margin: 100px auto;
+            width: 520px;
+            height: 280px;
+            border: 1px solid  #ccc;
+        }
+        .play-box img{
+            width: 520px;
+            height: 280px;
+        }
+        .play-box a{
+            display: none;
+        }
+        .play-box a.current{
+            display: block;
+        }
+        #iconList{
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -55px;
+            color:ivory;
+        }
+        #iconList li{
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: orange;
+            font-size: 0px;
+            float: left;
+            margin: 0px 5px;
+            cursor: pointer;
+        }
+        #iconList li.current{
+            background-color: red;
+        }
+        .slidebar{
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            width: 30px;
+            height: 20px;
+            line-height: 20px;
+            background: orange;
+            opacity: 0.8;
+            text-align: center;
+            color: aliceblue;
+            display: none;
+            cursor: pointer;
+        }
+        .slidebar-left{
+            left: 0px;
+            border-radius: 0 10px 10px 0;
+        }
+        .slidebar-right{
+            right: 0px;
+            border-radius: 10px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>轮播图</h1>
+    <hr>
+
+    <div id="playbox" class="play-box">
+        <div id="imgList">
+            <a href="http://www.baidu.com" target="_blank" class="current">
+                <img src="../imgs/girls/01.jpg" alt="">
+            </a>
+
+            <a href="http://www.jd.com" target="_blank">
+                <img src="../imgs/girls/02.jpg" alt="">
+            </a>
+
+            <a href="http://www.mi.com" target="_blank">
+                <img src="../imgs/girls/03.jpg" alt="">
+            </a>
+
+            <a href="http://www.qq.com" target="_blank">
+                <img src="../imgs/girls/04.jpg" alt="">
+            </a>
+
+            <a href="http://www.360.com" target="_blank">
+                <img src="../imgs/girls/05.jpg" alt="">
+            </a>
+        </div>
+
+        <div id="iconList">
+            <ul>
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+
+        <div class="slidebar slidebar-left">&lt;</div>
+        <div class="slidebar slidebar-right">&gt;</div>
+    </div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            // 设置变量
+            var speed = 3000;   // 速度
+            var m = 1;
+            // 定时
+            var timer = setInterval(runPlay, speed);
+            // 定时函数向右
+            function runPlay(){
+                if(m > 4){
+                    m = 0;
+                    console.log(m)
+                    controlPlay(m);
+                    m++;
+                }else{
+                    console.log(m)
+                    controlPlay(m);
+                    m++;
+                } 
+            };
+            // 定时函数向左
+            function backPlay(){
+                if(m < 0){
+                    m = 4;
+                    console.log(m)
+                    controlPlay(m);
+                    m--;
+                }else{
+                    console.log(m)
+                    controlPlay(m);
+                    m--;
+                } 
+            };
+            
+
+            // 控制图片的变化
+            function controlPlay(n){
+                $("#imgList a").hide().eq(n).fadeIn();
+                // $("#imgList a").removeClass("current").eq(n).addClass("current");
+                $("#iconList li").removeClass("current").eq(n).addClass("current");
+
+            }
+            // 鼠标移入清除定时器
+            $("#playbox").mouseenter(function (){
+                console.log("mouseenter");
+                clearInterval(timer);
+                // 显示箭头
+                $(".slidebar").fadeIn(300);
+            }).mouseleave(function (){
+                console.log("mouseleave");
+                timer = setInterval(runPlay, speed);
+                $(".slidebar").fadeOut(300);
+            })
+            // 点击小圆点事件
+            $("#iconList li").click(function (){
+                console.log( $(this).index() );
+                m = $(this).index();
+                controlPlay(m);
+                m++;
+            })
+            // 点击箭头事件
+            $(".slidebar-left").click(function (){
+                backPlay();
+                return false;
+            });
+            $(".slidebar-right").click(function (){
+                runPlay();
+                return false;
+            });
+
+
+        })
+    </script>
+</body>
+</html>

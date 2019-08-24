@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul{
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none;
+            background: #ccc;
+            width: 200px;
+            margin: 10px 0px;
+        }
+        span{
+            display: inline-block;
+            width: 60px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><p>我是p标签</p></li>
+        <li><span class="name">小明</span><span class="age">15</span></li>
+        <li><span class="name">小红</span><span class="age">16</span></li>
+        <li><span class="name">小王</span><span class="age">18</span></li>
+        <li><span class="name">小李</span><span class="age">20</span></li>
+    </ul>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+
+        /*
+            each()、map()、has()
+            each仅仅是给你遍历一遍，是没有返回的
+            map是遍历加返回
+        */
+        var arr = [];
+        $("li").each(function (index, ele){
+             arr.push( $(ele).find(".name").text() );
+        });
+        console.log(arr);   // (4) ["小明", "小红", "小王", "小李"]
+        console.log(arr.join(',')); // 小明,小红,小王,小李
+
+        
+
+        console.log($("li").map(function (index, ele){
+            if($(ele).find(".age").text() > 16){
+                $(ele).css("background","orange")
+                return ele;
+            }
+        }));
+
+        // 找到li标签下有p标签的
+        $("li").has("p").css("background","red");
+    </script>
+</body>
+</html>

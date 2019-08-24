@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            padding: 20px;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            background-color: #ccc;
+            overflow: hidden;
+        }
+        #box img{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery动画效果-自定义动画</h1>
+    <hr>
+
+    <button id="btn01">hide</button>
+
+    <br>
+    <br>
+    <div id="box">
+        <img src="http://www.qiangssvip.com/usr/uploads/2019/05/281426999.jpg" alt="">
+    </div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            $("#btn01").click(function (){
+                $("#box").animate({
+                "width":"toggle",
+                "height":"toggle"
+                }, "normal");
+            })
+        })
+    </script>
+</body>
+</html>

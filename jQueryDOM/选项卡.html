@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            font: 16px "microsoft YaHei",sans=-serif;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 800px;
+            margin: 100px auto;
+        }
+        .optain-list{
+            height: 40px;
+            border-bottom: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+        .optain-list li{
+            float: left;
+            padding: 0 20px;
+            border-top: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: none;
+            line-height: 39px;
+            background: #f5f5f5;
+        }
+        .optain-list li{
+            cursor: pointer;
+        }
+        .optain-list::after,.optain-list::before{
+            content: '';
+            display: table;
+            clear: both;
+        }
+        .card-list li{
+            padding: 20px;
+            border: 1px solid #ccc;
+            height: 300px;
+            border-top: none;
+            display: none;
+        }
+        .card-list li.active{
+            display: block;
+        }
+        .optain-list li.active{
+            height: 40px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="optain-list">
+            <ul>
+                <li class="active">我的购物车</li>
+                <li>已买的宝贝</li>
+                <li>购买过的店铺</li>
+                <li>我的发票</li>
+                <li>我的收藏</li>
+            </ul>
+        </div>
+        <div class="card-list">
+            <ul>
+                <li class="active">
+                    <h2>我的购物车</h2>
+                    <hr>
+                    <p>
+                        惠普电脑*1
+                    </p>
+                </li>
+                <li>
+                    <h2>已买的宝贝</h2>
+                    <hr>
+                    <p>
+                        阿里云ECS服务器
+                    </p>
+                </li>
+                <li>
+                    <h2>购买过的店铺</h2>
+                    <hr>
+                    <p>
+                        星哥无敌旗舰店
+                    </p>
+                </li>
+                <li>
+                    <h2>我的发票</h2>
+                    <hr>
+                    <p>
+                        20174141026
+                    </p>
+                </li>
+                <li>
+                    <h2>我的收藏</h2>
+                    <hr>
+                    <p>
+                        西服
+                    </p>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    
+    
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            $(".optain-list li").click(function (){
+                $(this).addClass("active").siblings("li").removeClass("active");
+                var index = $(this).index();
+                console.log(index)
+                $( ($(".card-list li")[index]) ).addClass("active").siblings("li").removeClass("active");
+            })
+        })
+    </script>
+</body>
+</html>

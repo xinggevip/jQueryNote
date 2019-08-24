@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select name="pro" id="s1">
+        <option value="">请选择省份</option>
+        <option value="1">河南</option>
+        <option value="2">湖南</option>
+        <option value="3">海南</option>
+    </select>
+    <select name="city" id="s2">
+        <option value="">请选择城市</option>
+    </select>
+     
+    <script>
+        var data={"1":["洛阳","信阳","开封"],"2":["长沙","张家界"],"3":["三亚","海口"]};
+        var ele_s1=document.getElementById("s1");
+        var ele_s2=document.getElementById("s2");
+     
+        ele_s1.onchange=function(){
+            var citys=data[this.value];
+            ele_s2.options.length=1;        //只保留s2的第1个option标签，其他的全部清空
+            for (var i=0;i<citys.length;i++){
+                var ele_option=document.createElement("option");
+                ele_option.innerHTML=citys[i];
+                ele_s2.appendChild(ele_option)
+            }
+        }
+    </script>
+</body>
+</html>

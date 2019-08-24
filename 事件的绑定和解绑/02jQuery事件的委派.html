@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        #mylist{
+            width: 600px;
+        }
+        #mylist li{
+            margin-bottom: 10px;
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+        #mylist li.current{
+            background-color: orange;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul id="mylist">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <input type="text" value="" id="info"><button id="btn">添加</button>
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+
+            // 事件委派 即使ul添加新的li，新的li也有even事件
+            $("#mylist").on("mouseover","li",function (){
+                $(this).toggleClass("current");
+            });
+            $("#mylist").on("mouseout","li",function (){
+                $(this).toggleClass("current");
+            });
+
+           // 再ul下添加li，
+            $("#btn").click(function (){
+                $("<li>").html($("#info").val()).appendTo("#mylist");
+            });
+        });
+    </script>
+</body>
+</html>

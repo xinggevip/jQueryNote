@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证之validator插件</title>
+    <style>
+        input,button{
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        button{
+            width: 322px;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>表单验证</h1>
+    <hr>
+
+    <form action="#" method="POST" id="loginForm">
+        <table>
+            <tr>
+                <td>邮箱</td>
+                <td>
+                    <input type="text" name="email">
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input type="password" name="pwd">
+                </td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td>
+                    <input type="password" name="repwd">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button>注册</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script src="../../jqueryFile/jquery-3.4.1.js"></script>
+    <script src="./dist/jquery.validator.min.js?local=zh-CN>"></script>
+    <script>
+        $(function(){
+            $("#loginForm").validator({
+                fields:{
+                    email:"required,email",
+                    pwd:{
+                        rule: "required,length(6~12)",
+                        msg: "密码error",
+                        ok: "密码success",
+                        tip: "Place input psd"
+                    },
+                    repwd:"match(pwd)"
+                }
+            })
+        })
+    </script>
+</body>
+</html>

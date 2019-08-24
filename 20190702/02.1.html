@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="d1">
+
+        内容内容
+    </div>
+
+    <script>
+        // jQuery采用闭包的方式解决命名空间
+        // 模拟jQuery的调用方式
+
+        (function (){
+
+            window.jQuery = window.$ =  jQuery;
+
+            function jQuery(anys){
+                // console.log(anys);
+                return new init(anys);
+
+            }
+
+            function init(anys){
+                var dom = document.getElementById(anys.slice(1));
+                this[0] = dom;
+                this.length = 1;
+                return this;
+            }
+
+            // 截断Init的原型，让init函数的原型等于jQuery的原型
+
+            init.prototype = jQuery.prototype;
+
+            jQuery.prototype.text = function (){
+                console.log("text");
+                return this;    // 执行完返回该对象，实现链式操作
+            };
+            jQuery.prototype.css = function (){
+                console.log("css");
+                return this;
+            }
+
+            
+        })();
+    
+        // jQuery("Hello");    // Hello
+        // jQuery("Today");    // Today
+        // $("fun");           // fun
+
+        
+        console.log(  $("#d1") );    // init {0: div#d1, length: 1}
+        $("#d1").text().css();
+
+        /*
+            1.如何全局使用jQuery
+            2.无new操作
+            3.init原型
+            4.链式操作
+        */
+
+
+    
+    </script>
+</body>
+</html>

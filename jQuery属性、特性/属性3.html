@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .def{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .setbgc{
+            width: 200px;
+            height: 200px;
+            background: burlywood;
+        }
+        .yizu{
+            width: 500px;
+            height: 30px;
+            background: green;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="one" class="def">
+        内容
+    </div>
+
+    <div id="su">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <button id="btn1">添加class样式</button>
+    <button id="btn2">移除class样式</button>
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $("#btn1").click(function (){
+            $("#one").addClass("setbgc");    // 添加class样式
+        });
+
+        $("#btn2").click(function (){
+            $("#one").removeClass("setbgc"); // 移除class样式
+        })
+
+        console.log( $(".def").text() );    // 获取属性的时候返回属性值
+        console.log( $(".def").text("修改内容") );  // 设置属性的时候返回jQuery对象，方便链式操作
+        
+        // 可以传一个函数,给一组标签添加样式
+        $("#su div").addClass(function (index, className){
+
+            console.log(index,className);
+            return "yizu"; // 可以添加多个样式，空格隔开 ps: return "yizu otherStyle";
+        });
+    </script>
+</body>
+</html>

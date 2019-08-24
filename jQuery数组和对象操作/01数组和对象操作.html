@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>数组和对象的操作</h1>
+    <hr>
+    <ul id="myList">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            var arr = [8,2,5,4,2,6];
+            // each 遍历
+            $.each($("#myList li").toArray(),function (index,item){
+                console.log(item,index);
+            });
+            // grep 过滤
+            var newArr = $.grep(arr,function (item,index){
+                return index % 2 == 0;
+                // console.log("newArr.index = " + index + " item = " + item);
+            });
+            console.log( newArr );
+            // map
+            var twoArr = $.map($("#myList li"),function (item,index){
+                return item;
+            });
+            console.log(twoArr);
+            
+            console.log( $.makeArray($("#myList li")) );
+            console.log( $.makeArray(document.querySelectorAll("#myList li")) )
+
+            // inArray 判断元素在数组中的位置
+            console.log( $.inArray(5,arr) );
+            // merge 合并数组
+            console.log( $.merge( arr,["哈哈","嘻嘻","呵呵"] ) )
+
+
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+        #d1{
+            padding: 0 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>弹框插件</h1>
+    <hr>
+    <button id="alertBtn">alert</button>
+    <button id="confirmBtn">confirm</button>
+    <button id="msgBtn">msg</button>
+    <button id="tipsBtn">tips</button>
+    <button id="loadBtn">load</button>
+    <button id="custBtn">自定义弹框</button>
+    <button id="custBtn1">自定义弹框2</button>
+
+    <div id="d1">
+        <h3>标题</h3>
+        <p>这是隐藏的元素</p>
+    </div>
+
+    <script src="../../jqueryFile/jquery-3.4.1.js"></script>
+    <script src="./layer/layer.js"></script>
+    <script>
+        $(document).ready(function (){
+            $("#alertBtn").click(function (){
+                layer.alert("警告",{icon: 1,title:"修改默认标题"})
+            });
+            $("#confirmBtn").click(function (){
+                layer.confirm("确定吗？");
+            });
+            $("#msgBtn").click(function () {
+                layer.msg("提示信息");
+            });
+            $("#tipsBtn").click(function () {
+                layer.tips("tips","#tipsBtn")
+            });
+            $("#loadBtn").click(function () {
+                var loadele = layer.load();
+                setTimeout(function () {
+                    layer.close(loadele);
+                },2000);
+            });
+            $("#custBtn").click(function () {
+                layer.open({
+                    // 默认type是0所以显示object，改成1即可
+                    type: 1,
+                    title: "Title",
+                    // content:"<p>内容1</p><p>内容</p>",
+                    content:$("#d1"),
+                    area:["500px","300px"],
+                    shadeClose: true    // 点遮罩层就可以关闭
+                })
+            });
+            $("#custBtn1").click(function () {
+                layer.open({
+                    type:2,
+                    title: "网页",
+                    content: "https://www.qiangssvip.com/",
+                    area: ["600px","500px"],
+                    maxmin: true
+
+                })
+            })
+        })
+    </script>
+</body>
+</html>

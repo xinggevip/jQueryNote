@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #d1{
+            width: 100px;
+            height: 100px;
+            background: burlywood;
+            color: aqua;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1">
+        内容
+    </div>
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        
+        //去左空格;
+        function ltrim(s){
+            return s.replace(/^\s*/g,"");
+        }
+        //去右空格;
+        function rtrim(s){
+            return s.replace(/\s*$/g,"");
+        }
+        //去左右空格;将长度大于19位的截取前19位
+        function trim(s){
+                b=rtrim(ltrim(s));
+                return b;
+        }
+
+
+
+        // 链式操作，先执行完设置颜色，再执行打印内容
+        console.log( $("#d1").css("color","red").text() );
+        var nr = $("#d1").text();
+        var nred = trim(nr);
+        // console.log(trim(nr));
+        for(let i of nred){
+            console.log(i);
+        }
+    </script>
+</body>
+</html>

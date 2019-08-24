@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .one{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="one">
+
+    </div>
+
+    <button id="btn">BTN</button>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        
+        // 传字符串
+        console.log($(".one").css("width"));    // 100px
+        // 传数组
+        console.log($(".one").css(["width","height"])); // {width: "100px", height: "100px"} 返回一个对象
+
+        // 设置css样式
+        $("#btn").click(function (){
+            // 第一个参数为属性，第二个参数为属性值 第二个参数包容性很强，可以不带单位，可以是数字
+            // $(".one").css("width","200px");
+            // $(".one").css("width","+=200px");
+            // 可以传对象批量设置属性
+            $(".one").css({
+                width: "+=100px",
+                height:"500px",
+                background: "blue"
+            });
+        });
+
+
+        // 设置属性，jQuery已经把常用的属性变成了更简单的调用
+        console.log( $(".one").css("height") ); // 100px  string
+        console.log( $(".one").height() );  // 100    number
+        $(".one").height("200px");
+
+        
+
+
+
+        
+        
+    </script>
+</body>
+</html>

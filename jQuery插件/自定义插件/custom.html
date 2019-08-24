@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>自定义插件</h1>
+    <hr>
+    <p>
+        马丽，1982年6月28日出生于辽宁省丹东，先后毕业于中央戏剧学院表演系、北京大学戏剧研究所，中国内地女演员。2005年马丽加入开心麻花舞台喜剧团队。2006年参演话剧《建筑大师》。2009年主演舞台剧《江湖学院》。2010年参演喜剧电影《决战刹马镇》，同年与何炅合作小品《超幸福鞋垫》，之后成功推出“超幸福”系列小品。2012年出演家庭情感剧《AA制生活》。2013年首次参加中央电视台春节联欢晚会 ... >>>
+    </p>
+    
+    <script src="../../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        // 给jQuery本身扩展方法
+        $.extend({
+            sayHello:function (name){
+                console.log("你好啊" + name);
+            }
+        });
+        // 给jQueryDom对象扩展方法01
+        $.fn.extend({
+            changeRed:function (){
+                $(this).css("color","red")
+            }
+        });
+        // 给jQueryDom对象扩展方法02
+        $.fn.changeYellow = function (){
+            $(this).css({
+                background:"yellow",
+                height:"1px",
+                border:"none"
+            });
+        };
+
+
+        $(document).ready(function (){
+            $.sayHello("星哥真帅");
+            $("p").changeRed();
+            $("h1").changeRed();
+            $("hr").changeYellow();
+        })
+    </script>
+</body>
+</html>

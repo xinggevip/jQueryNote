@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .wrapper{
+            position: relative;
+            left: 100px;
+            top:100px;
+            width: 300px;
+            height: 300px;
+            background: #ccc;
+
+
+        }
+        .one{
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background: blueviolet;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="one">
+            div
+        </div>
+    </div>
+
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        console.log( $(".one").offset() );      // {top: 200, left: 200}    相对于屏幕
+        console.log( $(".one").position() );    // {top: 100, left: 100}    相对于最近的有定位的父容器
+        // 设置offset()、position()值
+        $(".one").offset({
+            left: 50,
+            top: 50
+
+        });
+
+        console.log( $(".one").offset() );      // {top: 50, left: 50}    相对于屏幕
+        console.log( $(".one").position() );    // {top: -50, left: -50}    相对于最近的有定位的父容器
+    </script>
+</body>
+</html>

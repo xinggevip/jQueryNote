@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./jQueryUiJs/jquery-ui.min.css">
+    <title>Document</title>
+    <style>
+        #d1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        #su{
+            width: 500px;
+            height: 500px;
+            border: 1px solid blue;
+            overflow: hidden;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>jQuery Ui</h1>
+    <hr>
+    <div class="widget">
+        <button>A button element</button>
+        <input type="submit" value="A submit button">
+        <a href="#">An anchor</a>
+    </div>
+    <br>
+    <div class="test1">
+        <input type="text">
+    </div>
+    <br>
+
+    <div id="su">
+        <div id="d1"></div>
+    </div>
+    
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script src="./jQueryUiJs/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function (){
+            // 调用插件
+            $("#d1").draggable();
+            $( ".widget input[type=submit], .widget a, .widget button" ).button();
+            $( "button, input, a" ).click( function( event ) {
+                event.preventDefault();
+            });
+            $(".test1 input[type=text]").datepicker();
+
+            
+        })
+       
+    </script>
+</body>
+</html>

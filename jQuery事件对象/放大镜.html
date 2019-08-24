@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #smallBox{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        #smallBox img{
+            width: 400px;
+            height: 400px;
+        }
+        #bigBox{
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        #bigBox img{
+            position: absolute;
+            width: 1200px;
+            height: 1200px;
+        }
+        #zoom{
+            display: none;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background: url("https://img-tmdetail.alicdn.com/tps/i4/T12pdtXaldXXXXXXXX-2-2.png") repeat;
+            top: 0px;
+            left: 0px;
+            cursor: move;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>放大镜</h1>
+    <hr>
+    <div class="continner">
+        <div id="smallBox">
+            <img src="http://www.qiangssvip.com/usr/uploads/2019/05/281426999.jpg" alt="">
+            <div id="zoom"></div>
+        </div>
+        <div id="bigBox">
+            <img src="http://www.qiangssvip.com/usr/uploads/2019/05/281426999.jpg" alt="">
+        </div>
+    </div>
+    
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            $("#smallBox").mouseenter(function (e){
+                // 显示大图并且设置位置
+                var smallLeft = $("#smallBox").offset().left;   // 可视区域的位置，包含边框以内
+                var smallTop = $("#smallBox").offset().top;
+                $("#bigBox").show().offset({
+                    top:smallTop,
+                    left:$("#smallBox").width() + smallLeft + 10
+                });
+                // 显示放大镜
+                $("#zoom").show();
+                $(this).mousemove(function (e){
+                    // 获取相对于当前元素的鼠标位置
+                    var mLeft = e.pageX - smallLeft;
+                    var mTop = e.pageY - smallTop;
+                    var zWidth = $("#zoom").width() / 2;
+                    var zHeight = $("#zoom").height() / 2;
+                    var zoomWidth = $("#zoom").width();
+                    var zoomHeight = $("#zoom").height();
+                    var wBeishu = $("#bigBox img").width() / $("#smallBox").width();
+                    var hBeishu = $("#bigBox img").height() / $("#smallBox").height();
+
+                    // 控制放大镜的位置
+                    var zLeft = Math.min(Math.max(mLeft - zWidth, 0),zoomWidth);
+                    var zTop = Math.min(Math.max(mTop - zHeight, 0),zoomHeight)
+                    $("#zoom").css({
+                        left:zLeft,
+                        top:zTop,
+                    })
+                    
+
+                    // 控制大图显示部分内容
+                    $("#bigBox").scrollLeft(mLeft * wBeishu - zWidth);
+                    $("#bigBox").scrollTop(mTop * hBeishu - zHeight);
+
+
+                })
+            }).mouseleave(function (){
+                // 大图隐藏
+                $("#bigBox").hide();
+                // 放大镜隐藏
+                $("#zoom").hide();
+            })
+                
+            
+             
+        })
+    </script>
+</body>
+</html>

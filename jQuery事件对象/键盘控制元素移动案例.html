@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: orange;
+            position: absolute;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        // 根据按键移动
+
+        $(function (){
+            $(document).keypress(function (e){
+                // console.log(e.which);
+                /*
+                    w:119   上
+                    a:97    左
+                    s:115   下
+                    d:100   右
+                */
+                let x = $("#box").offset().left;
+                let y = $("#box").offset().top;
+                let winx = $(window).width();
+                let winy = $(window).height();
+                switch (e.which){
+                    case 119:
+                        // 上
+                        $("#box").offset({
+                            top:Math.max(y - 20,0)
+                        })
+                        break;
+                    case 97:
+                        // 左
+                        $("#box").offset({
+                            left:Math.max(x - 20,0)
+                        })
+                        break;
+                    case 115:
+                        // 下
+                        console.log(winx);
+                        $("#box").offset({
+                            top:Math.min(winy - 100,y + 20)
+                        })
+                        break;
+                    case 100:
+                        // 右
+                        $("#box").offset({
+                            left:Math.min(winx - 100,x + 20)
+                        })
+                        break;
+                }   
+
+
+                
+            })
+        })
+    </script>
+</body>
+</html>

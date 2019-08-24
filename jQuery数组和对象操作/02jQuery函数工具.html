@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>jQuery工具</h1>
+    <ul id="myList">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <form action="#">
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+        <button id="btn">按钮</button>
+    </form>
+    
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+
+        $(function (){
+            // $.proxy() 改变函数内的this指向
+            function testFn(){
+                console.log(this);
+            };
+            // testFn();
+            var newFn = $.proxy(testFn,{name:"tom"});
+            newFn();
+            // $.type() 判断数据类型
+            console.log( $.type(100) );  // number
+            console.log( $.type([1,2]) );  // array
+            console.log( $.type({}) );  // object
+            console.log( $.type($("h1")) );  // object
+            console.log( $.type( testFn ) );  // function
+            // $.isFunction() 是否为函数
+            console.log( $.isFunction( testFn ) );  // true
+            console.log( $.isFunction( newFn ) );  // true
+            // $.isEmptyObject() 是否为空对象
+            console.log( $.isEmptyObject({}) ) // true
+            // $.isPlainObject() 是否为纯对象
+            console.log( $.isPlainObject({}) );  // true
+            console.log( $.isPlainObject([1]) );  // false
+            console.log( $.isPlainObject($("h1")) );  // false
+            // $.isWindow()  判断是否为Window对象
+            console.log( $.isWindow(window) );  // true
+            // $.isNumber() 判断是否为数字
+            console.log( $.isNumeric(1.1) ); // true
+            console.log( $.isNumeric(NaN) ); // false
+            console.log( $.isNumeric("123") ); // true
+            console.log( $.isNumeric("123a") ); // false
+
+            // $.trim(String) 去掉两边空格
+            var str = "    Hello    "
+            console.log( "|" + str +"|" );  // |    Hello    | 
+            console.log( "|" + $.trim(str) +"|" );  // |Hello|
+            
+            // $.param() 序列化成字符串
+            console.log( $.param({name:"Tom",age:"18"}) );  // name=Tom&age=18
+            console.log( $.param("123") );  // 0=1&1=2&2=3
+            $("#btn").click(function (){
+                console.log( $.param( $("input") ) ); // =hh&=xx
+                return false;
+            });
+            // jQuery 版本
+            console.log( $.fn.jquery ); // 3.4.1
+
+
+            
+        })
+    </script>
+</body>
+</html>

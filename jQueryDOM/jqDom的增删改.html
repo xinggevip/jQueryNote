@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #box{
+            width: 800px;
+            padding: 20px;
+            border: 2px dashed orange;
+            font-size: 0;
+        }
+        #box img{
+            width: 200px;
+        }
+        #box .active{
+            border: 1px solid red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM 操作</h1>
+    <hr>
+        <img id="logo" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/image_72.png?v=md5" alt="">
+    <hr>
+    <div id="box">
+        <img class="active" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+        <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png" alt="">
+    </div>
+    <div id="box2">
+
+    </div>
+    <button id="emptyBtn">emptyBtn</button>
+    <button id="removeBtn">removeBtn</button>
+    <button id="detachBtn">detachBtn</button>
+    <button id="backBtn">恢复</button>
+    <button id="cloneBtn">cloneBtn</button>
+    <button id="appendBtn">append</button>
+    <button id="replaceBtn">replace</button>
+    
+
+    <script src="../jqueryFile/jquery-3.4.1.js"></script>
+    <script>
+        $(function (){
+            
+
+            // 存储被删掉的元素
+            var oldele = null;
+
+            $("#box img").click(function (){
+                $(this).toggleClass("active");
+            });
+
+
+            $("#emptyBtn").click(function (){
+                $("#box").empty();  //清空所有子元素
+            });
+
+            $("#removeBtn").click(function (){
+                oldele = $("img.active").remove();// 删除后返回删除过的元素，可以恢复结构和样式，不可恢复绑定的事件
+            });
+
+            $("#detachBtn").click(function (){
+                oldele = $("img.active").detach();// // 删除后返回删除过的元素，可以恢复结构和样式和绑定的事件
+            });
+
+            $("#backBtn").click(function (){
+                $("#box").append(oldele);
+            });
+
+            $("#cloneBtn").click(function (){
+                $("#box").clone().appendTo("body");
+            });
+
+            $("#appendBtn").click(function (){
+                $("#box").append($("#logo").clone());
+            });
+
+
+            $("#replaceBtn").click(function (){
+                $("img.active").replaceWith($("#logo").clone());    // 前边的替换成后边的
+                // replaceAll 后边的替换成前边的
+
+            })
+
+
+
+        })
+    </script>
+</body>
+</html>

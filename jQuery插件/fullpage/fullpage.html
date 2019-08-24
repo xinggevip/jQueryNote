@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/fullpage.min.css">
+    <style>
+        #fullpage{
+            text-align: center;
+        }
+        h1{
+            font-size: 80px;
+        }
+        h2{
+            font-size: 60px;
+        }
+        .fp-controlArrow.fp-prev{
+            left: 60px;
+        }
+        .fp-controlArrow.fp-next{
+            right: 60px;
+        }
+        #nav{
+            position: absolute;
+            z-index: 100;
+            top: 10px;
+            right: 10px;
+        }
+        #nav a{
+            color: aliceblue;
+            margin: 0px 5px;
+            text-decoration: none;
+        }
+        .bg{
+            background: url("https://www.qiangssvip.com/usr/uploads/2019/03/3303939872.jpg") no-repeat;
+            background-size: 100% auto;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <a href="#one">第一页</a>
+        <a href="#two">第二页</a>
+        <a href="#there">第三页</a>
+        <a href="#four">第四页</a>
+    </div>
+
+    <div id="fullpage">
+        <div class="section bg">
+            <h1>欢迎使用fullpage</h1>
+        </div>
+        <div class="section">
+            <div class="slide"> <h2>幻灯片 1</h2> </div>
+            <div class="slide"> <h2>幻灯片 2</h2> </div>
+            <div class="slide"> <h2>幻灯片 3</h2> </div>
+            <div class="slide"> <h2>幻灯片 4</h2> </div>
+        </div>
+        <div class="section">
+            <h1>第三页</h1>
+        </div>
+        <div class="section">
+            <h1>第四页</h1>
+        </div>
+        
+
+    </div>
+
+    <script src="../../jqueryFile/jquery-3.4.1.js"></script>
+    <script src="./dist/fullpage.extensions.min.js"></script>
+    <script>
+        $(document).ready(function (){
+            $("#fullpage").fullpage({
+                navigation: true,
+                sectionsColor : ['orange', 'skyblue','pink','#369'],
+                navigationTooltips: ['第一页','第二页','第三页','第四页'],
+                anchors:['one', 'two','there','four'],
+            });
+            
+        })
+    </script>
+</body>
+</html>
